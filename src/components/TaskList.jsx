@@ -31,4 +31,23 @@ function TaskList() {
   const handleDeleteTask = (id) => {
     setTasks((prev) => prev.filter((task) => task.id !== id))
   }
+
+  return (
+    <div className='p-4 bg-gray-100 rounded shadow max-w-md mx-auto mt-8'>
+      <h2 className='text-2xl font-bold mb-4'>Lista de tareas</h2>
+      <TaskForm onAddTask={handleAddTask} />
+      <ul>
+        {tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            onToggleComplete={handleToggleComplete}
+            onDelete={handleDeleteTask}
+          />
+        ))}
+      </ul>
+    </div>
+  )
 }
+
+export default TaskList
